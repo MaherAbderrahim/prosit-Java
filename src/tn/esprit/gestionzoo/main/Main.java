@@ -1,6 +1,7 @@
 package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.classes.*;
+import tn.esprit.gestionzoo.utils.ZooFullException;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,16 +17,43 @@ public class Main {
 
         try {
             myZoo.addAnimal(lion);
-            myZoo.addAnimal(lion2);
-            myZoo.addAnimal(tigre);
-            myZoo.addAnimal(girafe); // Devrait déclencher une exception
         } catch (ZooFullException e) {
             System.out.println("Erreur : " + e.getMessage());
+        }
+        finally {
+            System.out.println("nbr cage = "+myZoo.getNbrCages());
+        }
+
+        try {
+            myZoo.addAnimal(lion2);
+        } catch (ZooFullException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        finally {
+            System.out.println("nbr cage = "+myZoo.getNbrCages());
+        }
+
+        try {
+            myZoo.addAnimal(tigre);
+        } catch (ZooFullException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        finally {
+            System.out.println("nbr cage = "+myZoo.getNbrCages());
+        }
+
+        try {
+            myZoo.addAnimal(girafe);
+        } catch (ZooFullException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
+        finally {
+            System.out.println("nbr cage = "+myZoo.getNbrCages());
         }
 
         myZoo.displayAnimals();
 
-        // Suppression et affichage
+
         myZoo.removeAnimal(lion);
         myZoo.displayAnimals();
     }
