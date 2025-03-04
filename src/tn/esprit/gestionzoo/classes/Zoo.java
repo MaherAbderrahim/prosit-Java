@@ -1,12 +1,9 @@
 package tn.esprit.gestionzoo.classes;
 
-import tn.esprit.gestionzoo.utils.ZooFullException;
-
 public class Zoo {
     private Animal[] animals;
     private String name;
     private String city;
-    private final int nbrCages = 3;
     private int compteurAnimal;
 
     public Zoo() {
@@ -25,14 +22,9 @@ public class Zoo {
         if (compteurAnimal >= nbrCages) {
             throw new ZooFullException("Le zoo est plein, impossible d'ajouter un nouvel animal.");
         }
-        if (searchAnimal(a)==-1){
             animals[compteurAnimal] = a;
             compteurAnimal++;
-        }
-        System.out.println("Ajout reussie");
     }
-
-    public int getNbrCages() {
 
         return compteurAnimal;
     }
@@ -56,7 +48,6 @@ public class Zoo {
             }
             animals[compteurAnimal - 1] = null;
             compteurAnimal--;
-            System.out.println("Animal supprime. Nombre total d'animaux : " + compteurAnimal);
             return true;
         }
         return false;
@@ -66,7 +57,6 @@ public class Zoo {
         String nom = a.getName();
         for (int i = 0; i < compteurAnimal; i++) {
             if (animals[i].getName().equals(nom)) {
-                return i;
             }
         }
         return -1;
